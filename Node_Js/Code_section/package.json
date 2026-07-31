@@ -1,0 +1,20 @@
+{
+  "name": "code_section",
+  "version": "1.0.0",
+  "description": "node js learning ",
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/PawanForge/Backend-workspace.git)"
+  },
+  "license": "ISC",
+  "author": "pawan",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "colors": "^1.4.0"
+  }
+}
