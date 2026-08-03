@@ -1,6 +1,7 @@
 # 📘 Nodemon – Complete Beginner Notes
 
 
+
 # 🎯 What is Nodemon?
 
 **Nodemon** is a development tool that automatically restarts your Node.js application whenever you save changes to your code.
