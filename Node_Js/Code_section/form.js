@@ -29,6 +29,7 @@ http.createServer((req, resp) => {
     if (req.url === "/" && req.method === "GET") {
 
         fs.readFile("./html/form.html", "utf-8", (err, data) => {
+
             if (err) {
                 resp.writeHead(500, { "Content-Type": "text/plain" });
                 return resp.end("Internal Server Error");
@@ -36,6 +37,7 @@ http.createServer((req, resp) => {
 
             resp.writeHead(200, { "Content-Type": "text/html" });
             resp.end(data);
+
         });
 
     }
@@ -45,25 +47,22 @@ http.createServer((req, resp) => {
 
         let body = "";
 
-        // Data chunk
+        // Receive data
         req.on("data", (chunk) => {
             body += chunk;
         });
 
+        // After complete data is received
         req.on("end", () => {
 
-            console.log("Raw Data:");
-            console.log(body);
-
-            // String to object conversion
+            // Convert string into object
             const formData = querystring.parse(body);
 
-            console.log("Parsed Data:");
             console.log(formData);
 
-            console.log("Name:", formData.name);
+            console.log("Name :", formData.name);
             console.log("Email:", formData.email);
-            console.log("Age:", formData.age);
+            console.log("Age  :", formData.age);
 
             resp.writeHead(200, { "Content-Type": "text/html" });
             resp.end(`
@@ -77,11 +76,16 @@ http.createServer((req, resp) => {
 
     }
 
+    // Invalid Route
     else {
+
         resp.writeHead(404, { "Content-Type": "text/plain" });
         resp.end("Page Not Found");
+
     }
 
 }).listen(3200, () => {
-    console.log("Server running at http://localhost:3200");
+
+    console.log("Server Running at http://localhost:3200");
+
 });
