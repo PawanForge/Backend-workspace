@@ -6,9 +6,11 @@
         <title>Web Page</title>
     </head>
     <body>
-        <h1>Web page Heading</h1>
-        <input type="text" placeholder="Enter the name">
-         <input type="text" placeholder="Enter the email">
-        <button>Click me !</button>
+    <form action="/submit" method="POST">
+    <input type="text" name="name" placeholder="Enter Name">
+    <input type="email" name="email" placeholder="Enter Email">
+    <input type="number" name="age" placeholder="Enter Age">
+    <button type="submit">Submit</button>
+</form>
     </body>
 </html>
