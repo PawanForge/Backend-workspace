@@ -14,7 +14,7 @@ if (operation === "write") {
 
     console.log("File created successfully.");
 }
-else if(operation=='read'){
+else if(operation==='read'){
     const name=process.argv[3];
     const fullName="file/"+name+".txt"
     let data=fs.readFileSync(fullName,"utf-8");
@@ -44,3 +44,4 @@ else if (operation === "delete") {
 // console.log(data);
 
 //  fs.appendFileSync("file/apple.txt","and this good for Health");
+ 
