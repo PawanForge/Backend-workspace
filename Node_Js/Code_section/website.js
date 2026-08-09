@@ -8,36 +8,74 @@ http.createServer((req, resp) => {
         fs.readFile("web/web.html", "utf-8", (error, data) => {
 
             if (error) {
-                resp.writeHead(500, { "Content-Type": "text/plain" });
-                resp.end("Internal Server Error");
+                resp.writeHead(500, {
+                    "Content-Type": "text/plain"
+                });
+
+                resp.end("Home page error");
                 return;
             }
 
-            resp.writeHead(200, { "Content-Type": "text/html" });
-            resp.end(data);
+            resp.writeHead(200, {
+                "Content-Type": "text/html"
+            });
 
+            resp.end(data);
         });
 
-    } else if (req.url === "/style.css") {
+    }
+
+    else if (req.url === "/cart") {
+
+        fs.readFile("web/cart.html", "utf-8", (error, data) => {
+
+            if (error) {
+                resp.writeHead(500, {
+                    "Content-Type": "text/plain"
+                });
+
+                resp.end("Cart page error");
+                return;
+            }
+
+            resp.writeHead(200, {
+                "Content-Type": "text/html"
+            });
+
+            resp.end(data);
+        });
+
+    }
+
+    else if (req.url === "/style.css") {
 
         fs.readFile("web/style.css", "utf-8", (error, data) => {
 
             if (error) {
-                resp.writeHead(404, { "Content-Type": "text/plain" });
-                resp.end("CSS file not found");
+                resp.writeHead(404, {
+                    "Content-Type": "text/plain"
+                });
+
+                resp.end("CSS not found");
                 return;
             }
 
-            resp.writeHead(200, { "Content-Type": "text/css" });
-            resp.end(data);
+            resp.writeHead(200, {
+                "Content-Type": "text/css"
+            });
 
+            resp.end(data);
         });
 
-    } else {
+    }
 
-        resp.writeHead(404, { "Content-Type": "text/plain" });
+    else {
+
+        resp.writeHead(404, {
+            "Content-Type": "text/plain"
+        });
+
         resp.end("Page Not Found");
-
     }
 
 }).listen(4000, () => {
