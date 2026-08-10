@@ -1,21 +1,77 @@
+```html
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Cart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Cart - NodeShop</title>
+
     <link rel="stylesheet" href="/style.css">
 </head>
 
 <body>
 
-    <h1>🛒 My Cart</h1>
+    <!-- Navbar -->
+    <header class="navbar">
 
-    <h2>Laptop</h2>
-    <p>Price: ₹50,000</p>
+        <div class="logo">NodeShop</div>
 
-    <h2>Headphones</h2>
-    <p>Price: ₹2,000</p>
+        <div class="search-box">
+            <input type="text" placeholder="Search products...">
+            <button>Search</button>
+        </div>
 
-    <a href="/">Go Home</a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/product">Products</a>
+            <a href="/cart">Cart</a>
+        </nav>
+
+    </header>
+
+
+    <!-- Cart -->
+    <main class="cart-container">
+
+        <h1>🛒 My Cart</h1>
+
+        <div class="cart-item">
+            <div>
+                <h2>Laptop</h2>
+                <p>Price: ₹50,000</p>
+            </div>
+        </div>
+
+        <div class="cart-item">
+            <div>
+                <h2>Headphones</h2>
+                <p>Price: ₹2,000</p>
+            </div>
+        </div>
+
+        <div class="cart-total">
+            <h2>Total: ₹52,000</h2>
+
+            <a href="#" class="checkout-btn">
+                Checkout
+            </a>
+        </div>
+
+        <a href="/" class="back-home">
+            Go Home
+        </a>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 NodeShop | Built with HTML & CSS</p>
+    </footer>
 
 </body>
+
 </html>
+```

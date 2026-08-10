@@ -1,7 +1,12 @@
+
 const http = require('http');
 const fs = require('fs');
 
 http.createServer((req, resp) => {
+
+    // =========================
+    // HOME
+    // =========================
 
     if (req.url === "/") {
 
@@ -25,6 +30,11 @@ http.createServer((req, resp) => {
 
     }
 
+
+    // =========================
+    // CART
+    // =========================
+
     else if (req.url === "/cart") {
 
         fs.readFile("web/cart.html", "utf-8", (error, data) => {
@@ -46,6 +56,38 @@ http.createServer((req, resp) => {
         });
 
     }
+
+
+    // =========================
+    // PRODUCTS
+    // =========================
+
+    else if (req.url === "/product") {
+
+        fs.readFile("web/product.html", "utf-8", (error, data) => {
+
+            if (error) {
+                resp.writeHead(500, {
+                    "Content-Type": "text/plain"
+                });
+
+                resp.end("Product page error");
+                return;
+            }
+
+            resp.writeHead(200, {
+                "Content-Type": "text/html"
+            });
+
+            resp.end(data);
+        });
+
+    }
+
+
+    // =========================
+    // CSS
+    // =========================
 
     else if (req.url === "/style.css") {
 
@@ -69,6 +111,11 @@ http.createServer((req, resp) => {
 
     }
 
+
+    // =========================
+    // 404
+    // =========================
+
     else {
 
         resp.writeHead(404, {
@@ -79,5 +126,8 @@ http.createServer((req, resp) => {
     }
 
 }).listen(4000, () => {
+
     console.log("Server running at http://localhost:4000");
+
 });
+
