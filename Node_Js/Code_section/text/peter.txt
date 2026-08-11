@@ -1,0 +1,95 @@
+Here’s the **short and simple version**:
+
+## 1. `path` Module
+
+The `path` module is used to **work with file and folder paths**.
+
+```js
+const path = require("path");
+
+const file = "text/peter.txt";
+
+console.log(path.extname(file));   // .txt
+console.log(path.dirname(file));    // text
+console.log(path.basename(file));   // peter.txt
+console.log(path.isAbsolute(file)); // false
+console.log(path.resolve(file));    // complete/absolute path
+```
+
+### Easy meaning
+
+* `extname()` → **file extension**
+* `dirname()` → **folder name**
+* `basename()` → **file name**
+* `resolve()` → **absolute/complete path**
+* `isAbsolute()` → **checks absolute path**
+
+---
+
+## 2. `__dirname`
+
+`__dirname` tells you **where the current folder is located**.
+
+```js
+console.log(__dirname);
+```
+
+Example output:
+
+```text
+C:\Users\Student\project
+```
+
+👉 **`__dirname` = current folder path**
+
+---
+
+## 3. `__filename`
+
+`__filename` tells you **where the current file is located**.
+
+```js
+console.log(__filename);
+```
+
+Example:
+
+```text
+C:\Users\Student\project\app.js
+```
+
+👉 **`__filename` = current file's complete path**
+
+---
+
+## Main Difference
+
+| `path`               | `__dirname`       | `__filename`    |
+| -------------------- | ----------------- | --------------- |
+| Module               | Global variable   | Global variable |
+| Works with paths     | Gives folder path | Gives file path |
+| Must use `require()` | No                | No              |
+
+### Remember this:
+
+```text
+path       → Path operations
+__dirname  → Current folder
+__filename → Current file
+```
+
+**Simple example:**
+
+```text
+project/
+   │
+   ├── app.js
+   └── text/
+       └── peter.txt
+
+__dirname  → project/
+__filename → project/app.js
+basename   → peter.txt
+dirname    → text/
+extension  → .txt
+```
