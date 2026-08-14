@@ -1,0 +1,23 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "description": "express js",
+  "homepage": "https://github.com/PawanForge/Backend-workspace#readme",
+  "bugs": {
+    "url": "https://github.com/PawanForge/Backend-workspace/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PawanForge/Backend-workspace.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
