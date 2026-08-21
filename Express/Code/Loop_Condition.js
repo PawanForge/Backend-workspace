@@ -6,8 +6,7 @@ app.set("view engine", "ejs");
 
 app.get("/users", (req, res) => {
     const users = ["Pawan", "Kumar", "Yadav"];
-
-    res.render("users", { users: users });
+    res.render("users", { users: users ,isLogin:true});
 });
 
 app.listen(3200, () => {
