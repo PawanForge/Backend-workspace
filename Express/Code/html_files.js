@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 
 const app = express();
-const absPath=path.resolve('files_name')
+// const absPath=path.resolve('files_name')
 
 
 const publicPath=path.resolve('public')
