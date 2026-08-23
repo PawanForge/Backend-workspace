@@ -25,6 +25,10 @@ app.get("/about", (req, resp) => {
     // console.log(absPath);
     resp.sendFile(absPath);
 });
+app.get("/demo",(req,resp)=>{
+    const absPath=path.resolve("html_file/demo.html")
+    resp.sendFile(absPath);
+})
 
 app.use((req,resp)=>{
     const absPath=path.resolve('html_file/404.html')
