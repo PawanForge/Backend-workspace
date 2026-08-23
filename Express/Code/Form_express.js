@@ -24,6 +24,7 @@ import express from "express"
 import home from "./Form/home.js"
 import submit from "./Form/submit.js";
 import form from "./Form/form.js";
+import { contact } from "./Form/contact.js";
 const app=express();
 
 app.get("/",(req,resp)=>{
@@ -34,6 +35,9 @@ app.get("/login",(req,resp)=>{
 })
 app.post("/submit",(req,resp)=>{
     resp.send(submit());
+})
+app.get("/contact",(req,resp)=>{
+    resp.send(contact());
 })
 app.listen(5000);
 
