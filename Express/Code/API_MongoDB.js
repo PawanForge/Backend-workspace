@@ -33,7 +33,6 @@ client.connect().then((connection) => {
 
         resp.render("student", { result });
     });
-
 });
 
 app.listen(3200, () => {
