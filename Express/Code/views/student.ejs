@@ -1,27 +1,43 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Student Information</title>
 
     <style>
+
         table {
+
             border-collapse: collapse;
+
             width: 70%;
+
         }
 
         th, td {
+
             border: 1px solid black;
+
             padding: 10px;
+
             text-align: left;
+
         }
 
         th {
+
             background-color: #f2f2f2;
+
         }
+
     </style>
+
 </head>
 
 <body>
@@ -31,22 +47,70 @@
     <table>
 
         <tr>
+
             <th>Name</th>
+
             <th>Age</th>
+
             <th>Email</th>
+
+            <th>Delete</th>
+
         </tr>
 
         <% result.forEach((student) => { %>
 
             <tr>
+
                 <td><%= student.name %></td>
+
                 <td><%= student.age %></td>
+
                 <td><%= student.email %></td>
+
+                <td>
+
+                    <a href="#" onclick="deleteStudent('<%= student._id %>')">
+                        delete
+                    </a>
+
+                </td>
+
             </tr>
 
         <% }) %>
 
     </table>
+
+    <script>
+
+        function deleteStudent(id) {
+
+            fetch("/delete/" + id, {
+
+                method: "DELETE"
+
+            })
+
+            .then(response => response.json())
+
+            .then(result => {
+
+                if (result.success) {
+
+                    location.reload();
+
+                } else {
+
+                    alert(result.message);
+
+                }
+
+            });
+
+        }
+
+    </script>
 
 </body>
 
