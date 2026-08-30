@@ -3,7 +3,7 @@ import express from "express";
 import studentModel from "./model/studentModel.js";
 
 const app = express();
-
+app.use(express.json())
 await mongoose.connect("mongodb://localhost:27017/school");
 
 console.log("______connected_____");
@@ -12,6 +12,16 @@ app.get("/", async (req, resp) => {
     const studentData = await studentModel.find();
     resp.send(studentData);
 });
+app.post("/save",async(req,resp)=>{
+    console.log(req.body)
+
+    const studentData=await studentModel.create(req.body)
+    resp.send({
+        message:"Data Stored",
+        success:true,
+        storedInfo:studentData
+    })
+})
 
 app.listen(3200, () => {
     console.log("Server running on port 3200");
