@@ -16,8 +16,9 @@ if (operation === "write") {
 }
 else if(operation==='read'){
     const name=process.argv[3];
-    const fullName="file/"+name+".txt"
-    let data=fs.readFileSync(fullName,"utf-8");
+    // const fullName="file/"+name+".txt"
+    // let data=fs.readFileSync(fullName,"utf-8");
+    let data=fs.readFileSync(`file/${name}`,"utf-8")
     console.log(data);
 }
 else if (operation === "update") {

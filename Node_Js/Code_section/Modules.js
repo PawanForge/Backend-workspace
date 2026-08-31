@@ -1,7 +1,7 @@
 const fs=require('fs');
 const os=require('os');
 const {log,warn}=require('console');
-fs.writeFileSync("dummy","trying with module")
+fs.writeFileSync("dummy2","trying with module")
 console.log(os.platform());
 console.log(os.hostname());
 console.log(os.cpus());
