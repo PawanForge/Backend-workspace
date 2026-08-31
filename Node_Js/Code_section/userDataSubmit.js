@@ -12,7 +12,7 @@ function userDataSubmit(req, resp) {
 
         let readableData = queryString.parse(rawData);
 
-        let dataString = "My name is " + readableData.name;
+        let dataString = "My name is " + readableData.email;
 
         console.log(dataString);
 

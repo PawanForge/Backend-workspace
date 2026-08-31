@@ -12,11 +12,16 @@ const http=require('http');
         name:'Shivam',
         age:'22',
         email:'shivam@test.com'
+    },{
+        name:"Anil Yadav",
+        age:'45',
+        email:'anil@test.coms'
     }
  ]
  http.createServer((req,resp)=>{
     resp.setHeader("content-Type","application/json");
     resp.write(JSON.stringify(userData));
+    // resp.write(userData);
     resp.end();
 
  }).listen(9300);
