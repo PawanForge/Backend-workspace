@@ -75,7 +75,7 @@ app.put("/update/:id",async(req,resp)=>{
     resp.send({
         message:'data update',
         success:"true",
-        info:null
+        info:studentData
     })
 })
 
