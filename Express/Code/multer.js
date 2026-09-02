@@ -3,17 +3,20 @@ import express from "express";
 import multer from "multer";
 
 const app = express();
-const storage=multer.diskStorage({
-    destination:function(req,file,cb){
-        cd(null,'upload')
+
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'upload')
     },
-    filename:function(req,file,cb){
-        cb(null,file.originalname)
+
+    filename: function(req, file, cb) {
+        cb(null, file.originalname)
     },
 })
+
 // Multer configuration
 // const upload = multer({ dest: "upload/" });
-const upload=multer({storage})
+const upload = multer({storage})
 
 // Home page
 app.get("/", (req, resp) => {
@@ -36,3 +39,4 @@ app.post("/upload", upload.single("myfile"), (req, resp) => {
 app.listen(3200, () => {
     console.log("Server running on port 3200");
 });
+
