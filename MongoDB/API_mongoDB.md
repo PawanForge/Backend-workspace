@@ -7,8 +7,8 @@ import express from "express";
 import { MongoClient } from "mongodb";
 ```
 
-* **Express** → server/API banane ke liye
-* **MongoClient** → MongoDB se connect karne ke liye
+* **Express** → Used to create a server/API.
+* **MongoClient** → Used to connect to MongoDB.
 
 ---
 
@@ -18,7 +18,7 @@ import { MongoClient } from "mongodb";
 const app = express();
 ```
 
-Express application create ki.
+This creates an **Express application**.
 
 ---
 
@@ -29,8 +29,8 @@ const dbName = "pawan";
 const url = "mongodb://localhost:27017";
 ```
 
-* `dbName` → database ka naam
-* `url` → MongoDB ka address
+* `dbName` → Name of the database.
+* `url` → Address of the MongoDB server.
 
 ---
 
@@ -40,26 +40,28 @@ const url = "mongodb://localhost:27017";
 const client = new MongoClient(url);
 ```
 
-MongoDB connection ke liye client create kiya.
+This creates a **MongoDB client** that will be used to connect to MongoDB.
 
 ---
 
-## 5. Connect MongoDB
+## 5. Connect to MongoDB
 
 ```js
 client.connect().then((connection) => {
 ```
 
-MongoDB se connection successful hone ke baad `.then()` ke andar ka code execute hota hai.
+After the connection to MongoDB is successful, the code inside `.then()` is executed.
 
-```text id="jv6u1u"
+### Simple Flow
+
+```text
 client.connect()
       ↓
- MongoDB
+   MongoDB
       ↓
- Connected
+   Connected
       ↓
-   .then()
+    .then()
 ```
 
 ---
@@ -70,12 +72,12 @@ client.connect()
 const db = connection.db(dbName);
 ```
 
-`pawan` database select kiya.
+This selects the `pawan` database.
 
-```text id="7l5q1n"
+```text
 MongoDB
    ↓
-pawan
+ pawan
 ```
 
 ---
@@ -88,9 +90,9 @@ pawan
 app.get("/api", async (req, resp) => {
 ```
 
-Ye `/api` endpoint create karta hai.
+This creates a `/api` endpoint.
 
-Browser/API client:
+You can access it in a browser or API client:
 
 ```text
 http://localhost:3200/api
@@ -104,16 +106,16 @@ http://localhost:3200/api
 const collection = db.collection("my_information");
 ```
 
-`my_information` collection select ki.
+This selects the `my_information` collection.
 
-```text id="1x7d7u"
+```text
 MongoDB
    ↓
-pawan          ← Database
+pawan              ← Database
    ↓
-my_information ← Collection
+my_information    ← Collection
    ↓
-Documents      ← Data
+Documents         ← Data
 ```
 
 ---
@@ -124,12 +126,12 @@ Documents      ← Data
 const result = await collection.find().toArray();
 ```
 
-* `find()` → documents find karta hai
-* `toArray()` → documents ko array mein convert karta hai
-* `await` → data aane ka wait karta hai
-* `result` → fetched data store karta hai
+* `find()` → Finds documents in the collection.
+* `toArray()` → Converts the documents into an array.
+* `await` → Waits for the data to be received.
+* `result` → Stores the fetched data.
 
-Example:
+### Example
 
 ```js
 [
@@ -149,9 +151,11 @@ Example:
 resp.send(result);
 ```
 
-MongoDB ka data client ko response mein bhejta hai.
+This sends the MongoDB data to the client as the API response.
 
-```text id="w8v42s"
+### Simple Flow
+
+```text
 Browser
    ↓
 GET /api
@@ -177,13 +181,15 @@ JSON response
 app.get("/ui", async (req, resp) => {
 ```
 
+This creates a route for the webpage.
+
 URL:
 
 ```text
 http://localhost:3200/ui
 ```
 
-Ye webpage ke liye hai.
+This route is used to display a webpage.
 
 ---
 
@@ -193,7 +199,7 @@ Ye webpage ke liye hai.
 const result = await collection.find().toArray();
 ```
 
-MongoDB se students ka data fetch karta hai.
+This fetches the student data from MongoDB.
 
 ---
 
@@ -203,9 +209,11 @@ MongoDB se students ka data fetch karta hai.
 resp.render("student", { result });
 ```
 
-`result` ko `student.ejs` page mein bhejta hai.
+This sends the `result` data to the `student.ejs` page.
 
-```text id="wlz8yy"
+### Simple Flow
+
+```text
 MongoDB
    ↓
 result
@@ -221,30 +229,34 @@ Browser
 
 # API vs UI
 
-| API                   | UI                       |
-| --------------------- | ------------------------ |
-| `/api`                | `/ui`                    |
-| Data return karta hai | Webpage return karta hai |
-| `resp.send()`         | `resp.render()`          |
-| JSON/data             | HTML/EJS                 |
+| API                | UI                    |
+| ------------------ | --------------------- |
+| `/api`             | `/ui`                 |
+| Returns data       | Returns a webpage     |
+| Uses `resp.send()` | Uses `resp.render()`  |
+| Returns JSON/data  | Returns HTML/EJS page |
 
-### Simple Flow
+---
 
-```text id="p4ek4r"
-              Express
-                 ↓
-             MongoDB
-                 ↓
-              result
-              /     \
-             ↓       ↓
-          /api      /ui
-            ↓        ↓
-        JSON Data   EJS Page
+# Simple Flow
+
+```text
+                 Express
+                    ↓
+                 MongoDB
+                    ↓
+                  result
+                 /      \
+                ↓        ↓
+              /api      /ui
+                ↓        ↓
+           JSON Data   EJS Page
 ```
 
-## ⭐ Yaad rakhne wali line
+---
 
-**API = MongoDB ka data client ko dena.**
+## ⭐ Remember This
 
-**UI = MongoDB ka data EJS ke through webpage par dikhana.**
+**API = Give MongoDB data to the client.**
+
+**UI = Display MongoDB data on a webpage using EJS.**

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import studentSchema from "../schema/studentschema.js";
 
-const studentModel = mongoose.model("students", studentSchema);
+const my_informationModel = mongoose.model("my_information", studentSchema);
 
-export default studentModel;
+export default my_informationModel;
