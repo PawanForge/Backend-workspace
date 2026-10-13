@@ -6,14 +6,13 @@ const app = express();
 
 app.use(express.json());
 
-// Start server and connect database
 const startServer = async () => {
   try {
     await mongoose.connect("mongodb://localhost:27017/pawan");
 
     console.log("MongoDB connected successfully");
 
-    // GET - Fetch all students
+    // GET 
     app.get("/", async (req, resp) => {
       try {
         const studentData = await my_informationModel.find();
@@ -99,7 +98,7 @@ const startServer = async () => {
       }
     });
 
-    // DELETE - Delete student by ID
+    // DELETE 
     app.delete("/delete/:id", async (req, resp) => {
       try {
         const id = req.params.id;
